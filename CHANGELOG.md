@@ -1,3 +1,8 @@
+## [1.3.0] - 28-Jul-2022
+
+* Apply license BSD-3-clause
+* Refactor readme
+
 ## [1.2.0] - 12-Jul-2022
 
 * Move repository
