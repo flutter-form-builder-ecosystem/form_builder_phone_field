@@ -1,7 +1,7 @@
 name: form_builder_phone_field
 description: International phone number field for FlutterFormBuilder package
 version: 1.3.0
-homepage: https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field
+repository: https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field
 issue_tracker: https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field/issues
 
 environment:
