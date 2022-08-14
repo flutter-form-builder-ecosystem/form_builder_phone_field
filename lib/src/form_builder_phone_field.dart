@@ -44,7 +44,11 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
   final EdgeInsets? titlePadding;
   final bool? isSearchable;
   final Text? dialogTitle;
-  final String? defaultSelectedCountryIsoCode;
+
+  /// Default country iso code selected in dropdown
+  ///
+  /// By default `US`
+  final String defaultSelectedCountryIsoCode;
   final List<String>? priorityListByIsoCode;
   final List<String>? countryFilterByIsoCode;
   final TextStyle? dialogTextStyle;
@@ -180,9 +184,7 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
     this.priorityList,
     this.itemBuilder,
     this.iconSelector,
-  })  : assert(initialValue == null ||
-            controller == null ||
-            defaultSelectedCountryIsoCode != null),
+  })  : assert(initialValue == null || controller == null),
         super(
           key: key,
           initialValue: initialValue,
@@ -305,7 +307,7 @@ class _FormBuilderPhoneFieldState
     super.initState();
     _effectiveController = widget.controller ?? TextEditingController();
     _selectedDialogCountry = CountryPickerUtils.getCountryByIsoCode(
-        widget.defaultSelectedCountryIsoCode!);
+        widget.defaultSelectedCountryIsoCode);
     _parsePhone();
   }
 
@@ -318,8 +320,16 @@ class _FormBuilderPhoneFieldState
     super.dispose();
   }
 
+  @override
+  void reset() {
+    super.reset();
+    _effectiveController = widget.controller ?? TextEditingController();
+    _selectedDialogCountry = CountryPickerUtils.getCountryByIsoCode(
+        widget.defaultSelectedCountryIsoCode);
+    _parsePhone();
+  }
+
   Future<void> _parsePhone() async {
-    // print('initialValue: $initialValue');
     if (initialValue != null && initialValue!.isNotEmpty) {
       try {
         final parseResult = await PhoneNumberUtil().parse(initialValue!);
@@ -330,6 +340,7 @@ class _FormBuilderPhoneFieldState
         _effectiveController.text = parseResult.nationalNumber;
       } catch (error) {
         _effectiveController.text = initialValue!.replaceFirst('+', '');
+        debugPrint(error.toString());
       }
     }
   }
