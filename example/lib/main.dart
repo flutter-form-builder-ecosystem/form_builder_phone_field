@@ -78,14 +78,27 @@ class MyHomePage extends StatelessWidget {
                 ]),
               ),
               const SizedBox(height: 15),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.saveAndValidate()) {
-                    debugPrint(_formKey.currentState!.value.toString());
-                  }
-                },
-                child: const Text("Submit"),
-              )
+              Wrap(
+                spacing: 16,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.saveAndValidate()) {
+                        debugPrint(_formKey.currentState!.value.toString());
+                      }
+                    },
+                    child: const Text("Submit"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      _formKey.currentState?.reset();
+                      debugPrint(
+                          _formKey.currentState!.instantValue.toString());
+                    },
+                    child: const Text("Reset"),
+                  )
+                ],
+              ),
             ],
           ),
         ),
