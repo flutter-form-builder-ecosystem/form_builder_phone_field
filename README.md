@@ -14,7 +14,6 @@ ___
 - [Use](#use)
     - [Setup](#setup)
     - [Basic use](#basic-use)
-    - [Especific uses](#especific-uses)
 - [Support](#support)
     - [Contribute](#contribute)
     - [Questions and answers](#questions-and-answers)
@@ -29,7 +28,7 @@ ___
 - Country selector
 - Automatic parsing international number 
 
-## Use
+## Usage
 
 ### Setup
 
@@ -60,9 +59,9 @@ You have some ways to contribute to this packages
 
  - Beginner: Reporting bugs or request new features
  - Intermediate: Implement new features (from issues or not) and created pull requests
- - Advanced: Join to [organization](#ecosystem) like a member and help coding, manage issues, dicuss new features and other things
+ - Advanced: Join the [organization](#ecosystem) like a member and help coding, manage issues, dicuss new features and other things
 
- See [contribution file](https://github.com/flutter-form-builder-ecosystem/.github/blob/main/CONTRIBUTING.md) for more details
+ See [contribution guide](https://github.com/flutter-form-builder-ecosystem/.github/blob/main/CONTRIBUTING.md) for more details
 
 ### Questions and answers
 
