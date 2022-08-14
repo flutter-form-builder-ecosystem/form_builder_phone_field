@@ -335,7 +335,7 @@ class _FormBuilderPhoneFieldState
         final parseResult = await PhoneNumberUtil().parse(initialValue!);
         setState(() {
           _selectedDialogCountry =
-              CountryPickerUtils.getCountryByPhoneCode(parseResult.countryCode);
+              CountryPickerUtils.getCountryByIsoCode(parseResult.regionCode);
         });
         _effectiveController.text = parseResult.nationalNumber;
       } catch (error) {
