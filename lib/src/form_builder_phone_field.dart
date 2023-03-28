@@ -117,6 +117,15 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
   /// By default this widget is `const Icon(Icons.arrow_drop_down)`
   final Widget? iconSelector;
 
+  /// View to display when search found no result
+  final Widget? searchEmptyView;
+
+  /// Country picker button
+  final Widget Function(
+    Widget flag,
+    String countryCode,
+  )? countryPicker;
+
   /// Creates field for international phone number input.
   FormBuilderPhoneField({
     Key? key,
@@ -184,6 +193,8 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
     this.priorityList,
     this.itemBuilder,
     this.iconSelector,
+    this.countryPicker,
+    this.searchEmptyView,
   })  : assert(initialValue == null || controller == null),
         super(
           key: key,
@@ -214,23 +225,30 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
                                 : state._openCountryPickerDialog();
                           }
                         : null,
-                    child: Row(
-                      children: <Widget>[
-                        iconSelector ?? const Icon(Icons.arrow_drop_down),
-                        const SizedBox(width: 10),
-                        CountryPickerUtils.getDefaultFlagImage(
-                          state._selectedDialogCountry,
-                        ),
-                        const SizedBox(width: 10),
-                        Text(
-                          '+${state._selectedDialogCountry.phoneCode} ',
-                          style: Theme.of(state.context)
-                              .textTheme
-                              .subtitle1!
-                              .merge(style),
-                        ),
-                      ],
-                    ),
+                    child: countryPicker != null
+                        ? countryPicker(
+                            CountryPickerUtils.getDefaultFlagImage(
+                              state._selectedDialogCountry,
+                            ),
+                            '+${state._selectedDialogCountry.phoneCode} ',
+                          )
+                        : Row(
+                            children: <Widget>[
+                              iconSelector ?? const Icon(Icons.arrow_drop_down),
+                              const SizedBox(width: 10),
+                              CountryPickerUtils.getDefaultFlagImage(
+                                state._selectedDialogCountry,
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                '+${state._selectedDialogCountry.phoneCode} ',
+                                style: Theme.of(state.context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .merge(style),
+                              ),
+                            ],
+                          ),
                   ),
                   Expanded(
                     child: TextField(
@@ -408,6 +426,7 @@ class _FormBuilderPhoneFieldState
             searchInputDecoration:
                 InputDecoration(hintText: widget.searchText ?? 'Search...'),
             isSearchable: widget.isSearchable ?? true,
+            searchEmptyView: widget.searchEmptyView,
             title: widget.dialogTitle ??
                 Text(
                   'Select Your Phone Code',

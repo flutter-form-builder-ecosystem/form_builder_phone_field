@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       // Locale config required by form_builder_validators
       // https://github.com/danvick/flutter_form_builder/blob/master/packages/form_builder_validators/example/lib/main.dart
-      supportedLocales: [...FormBuilderLocalizations.delegate.supportedLocales],
+      supportedLocales: const [...FormBuilderLocalizations.supportedLocales],
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
