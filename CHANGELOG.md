@@ -1,34 +1,48 @@
-## [1.3.0] - 28-Jul-2022
+## [1.4.0]
+
+### Bug fixes
+
+* Reset field value when call form reset
+* Update field value by formKey when call patchValue
+
+### Features
+
+* **NEW** Add property `countryPicker` that allow a custom  country picker widget
+* **NEW** Add property `searchEmptyView`
+* Parse international code by iso code instead
+* Update `flutter_form_builder` to 8.0.0
+
+## [1.3.0]
 
 * Apply license BSD-3-clause
 * Refactor readme
 
-## [1.2.0] - 12-Jul-2022
+## [1.2.0]
 
 * Move repository
 * Update dependencies
 
-## [1.1.0] - 23-Jun-2022
+## [1.1.0]
 
 * Added property iconSelector
 
-## [1.0.0] - 15-Jun-2022
+## [1.0.0]
 
 * Added web support
 
-## [1.0.0-beta.0] - 07-Sep-2021
+## [1.0.0-beta.0]
 
 * Compatibility with `flutter_form_builder` ^7.*
 
-## [0.3.0] - 07-Sep-2021
+## [0.3.0]
 
 * Compatibility with `flutter_form_builder` ^6.*
 * **BREAKING CHANGES:** Upgrade to `phone_number` v0.12.0
 
-## [0.2.0] - 18-Mar-2021
+## [0.2.0]
 
 * Flutter 2 compatibility
 
-## [0.1.0] - 30-Dec-2022
+## [0.1.0]
 
 * Initial release.
