@@ -1,7 +1,7 @@
 # Form Builder Phone Field
 
 [![Pub Version](https://img.shields.io/pub/v/form_builder_phone_field?logo=flutter&style=for-the-badge)](https://pub.dev/packages/form_builder_phone_field)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/flutter-form-builder-ecosystem/form_builder_phone_field/Base?logo=github&style=for-the-badge)](https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field/actions/workflows/base.yaml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/flutter-form-builder-ecosystem/form_builder_phone_field/base.yaml?branch=main&logo=github&style=for-the-badge)](https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field/actions/workflows/base.yaml)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/flutter-form-builder-ecosystem/form_builder_phone_field?logo=codefactor&style=for-the-badge)](https://www.codefactor.io/repository/github/flutter-form-builder-ecosystem/form_builder_phone_field)
 [![Codecov](https://img.shields.io/codecov/c/github/flutter-form-builder-ecosystem/form_builder_phone_field?logo=codecov&style=for-the-badge)](https://codecov.io/gh/flutter-form-builder-ecosystem/form_builder_phone_field/)
 
@@ -9,22 +9,22 @@ International phone number field for [flutter_form_builder](https://pub.dev/pack
 ___
 
 - [Features](#features)
-- [Use](#use)
-    - [Setup](#setup)
-    - [Basic use](#basic-use)
+- [Usage](#usage)
+  - [Setup](#setup)
+  - [Basic use](#basic-use)
 - [Support](#support)
-    - [Contribute](#contribute)
-    - [Questions and answers](#questions-and-answers)
-    - [Donations](#donations)
+  - [Contribute](#contribute)
+  - [Questions and answers](#questions-and-answers)
+  - [Donations](#donations)
 - [Roadmap](#roadmap)
 - [Ecosystem](#ecosystem)
 - [Thanks to](#thanks-to)
-    - [Contributors](#contributors)
+  - [Contributors](#contributors)
 
 ## Features
 
 - Country selector
-- Automatic parsing international number 
+- Automatic parsing international number
 
 ## Usage
 
@@ -47,7 +47,8 @@ FormBuilderPhoneField(
   ]),
 ),
 ```
-See [pud.dev example tab](https://pub.dev/packages/form_builder_phone_field/example) or [github code](example/lib/main.dart) for more details
+
+See [pub.dev example tab](https://pub.dev/packages/form_builder_phone_field/example) or [github code](example/lib/main.dart) for more details
 
 ## Support
 
@@ -55,9 +56,9 @@ See [pud.dev example tab](https://pub.dev/packages/form_builder_phone_field/exam
 
 You have some ways to contribute to this packages
 
- - Beginner: Reporting bugs or request new features
- - Intermediate: Implement new features (from issues or not) and created pull requests
- - Advanced: Join the [organization](#ecosystem) like a member and help coding, manage issues, dicuss new features and other things
+- Beginner: Reporting bugs or request new features
+- Intermediate: Implement new features (from issues or not) and created pull requests
+- Advanced: Join the [organization](#ecosystem) like a member and help coding, manage issues, dicuss new features and other things
 
  See [contribution guide](https://github.com/flutter-form-builder-ecosystem/.github/blob/main/CONTRIBUTING.md) for more details
 
