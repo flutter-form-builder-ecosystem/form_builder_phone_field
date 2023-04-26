@@ -219,7 +219,7 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
                   GestureDetector(
                     onTap: state.enabled
                         ? () {
-                            state.requestFocus();
+                            state.focus();
                             isCupertinoPicker
                                 ? state._openCupertinoCountryPicker()
                                 : state._openCountryPickerDialog();
