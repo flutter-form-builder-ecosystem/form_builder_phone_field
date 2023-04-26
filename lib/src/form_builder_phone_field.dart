@@ -128,19 +128,18 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
 
   /// Creates field for international phone number input.
   FormBuilderPhoneField({
-    Key? key,
-    //From Super
-    required String name,
-    FormFieldValidator<String>? validator,
-    String? initialValue,
-    InputDecoration decoration = const InputDecoration(),
-    ValueChanged<String?>? onChanged,
-    ValueTransformer<String?>? valueTransformer,
-    bool enabled = true,
-    FormFieldSetter<String>? onSaved,
-    AutovalidateMode autovalidateMode = AutovalidateMode.disabled,
-    VoidCallback? onReset,
-    FocusNode? focusNode,
+    super.key,
+    required super.name,
+    super.validator,
+    super.initialValue,
+    super.decoration,
+    super.onChanged,
+    super.valueTransformer,
+    super.enabled,
+    super.onSaved,
+    AutovalidateMode super.autovalidateMode = AutovalidateMode.disabled,
+    super.onReset,
+    super.focusNode,
     this.obscureText = false,
     this.textCapitalization = TextCapitalization.none,
     this.scrollPadding = const EdgeInsets.all(20.0),
@@ -197,18 +196,6 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
     this.searchEmptyView,
   })  : assert(initialValue == null || controller == null),
         super(
-          key: key,
-          initialValue: initialValue,
-          name: name,
-          validator: validator,
-          valueTransformer: valueTransformer,
-          onChanged: onChanged,
-          autovalidateMode: autovalidateMode,
-          onSaved: onSaved,
-          enabled: enabled,
-          onReset: onReset,
-          decoration: decoration,
-          focusNode: focusNode,
           builder: (FormFieldState<String?> field) {
             final state = field as _FormBuilderPhoneFieldState;
 
@@ -262,8 +249,9 @@ class FormBuilderPhoneField extends FormBuilderField<String> {
                         hintText: decoration.hintText,
                         hintStyle: decoration.hintStyle,
                       ),
-                      onChanged: (_) {
-                        state.invokeChange();
+                      onChanged: (value) {
+                        // Use setValue instead didChange to avoid parseNumber
+                        state.setValue(value);
                       },
                       maxLines: 1,
                       keyboardType: keyboardType,
@@ -331,7 +319,6 @@ class _FormBuilderPhoneFieldState
 
   @override
   void dispose() {
-    // Dispose the _effectiveController when initState created it
     if (null == widget.controller) {
       _effectiveController.dispose();
     }
@@ -347,25 +334,29 @@ class _FormBuilderPhoneFieldState
     _parsePhone();
   }
 
-  Future<void> _parsePhone() async {
-    if (initialValue != null && initialValue!.isNotEmpty) {
+  Future<void> _parsePhone({String? newPhone}) async {
+    final phone = newPhone ?? initialValue ?? '';
+    if (phone.isNotEmpty) {
       try {
-        final parseResult = await PhoneNumberUtil().parse(initialValue!);
+        final parseResult = await PhoneNumberUtil().parse(phone);
         setState(() {
           _selectedDialogCountry =
               CountryPickerUtils.getCountryByIsoCode(parseResult.regionCode);
         });
         _effectiveController.text = parseResult.nationalNumber;
       } catch (error) {
-        _effectiveController.text = initialValue!.replaceFirst('+', '');
+        if (phone.contains('+')) {
+          _effectiveController.text = phone.replaceFirst('+', '');
+        }
         debugPrint(error.toString());
       }
     }
   }
 
-  void invokeChange() {
-    didChange(fullNumber);
-    widget.onChanged?.call(fullNumber);
+  @override
+  void didChange(String? value) async {
+    super.didChange(value);
+    await _parsePhone(newPhone: value);
   }
 
   void _openCupertinoCountryPicker() {
@@ -434,7 +425,7 @@ class _FormBuilderPhoneFieldState
                 ),
             onValuePicked: (Country country) {
               setState(() => _selectedDialogCountry = country);
-              invokeChange();
+              didChange(fullNumber);
             },
             itemFilter: widget.countryFilterByIsoCode != null
                 ? (c) => widget.countryFilterByIsoCode!.contains(c.isoCode)
