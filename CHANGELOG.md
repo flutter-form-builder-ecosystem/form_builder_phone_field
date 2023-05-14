@@ -1,3 +1,14 @@
+## [2.0.0-dev.1]
+
+### BREAKING CHANGES
+
+* Update constraints to Flutter 3.10
+* Compile with Android SDK 33
+
+### Features
+
+* Update to use phone_number 2.0.0
+
 ## [1.4.0]
 
 ### Bug fixes
