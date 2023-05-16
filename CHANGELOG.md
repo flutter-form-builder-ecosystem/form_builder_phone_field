@@ -1,9 +1,11 @@
-## [2.0.0-dev.1]
+## [2.0.0]
 
 ### BREAKING CHANGES
 
 * Update constraints to Flutter 3.10
+* Update constraints to Dart 3
 * Compile with Android SDK 33
+* Update `flutter_form_builder` to 9.x.x. Take a look breaking changes on [there changelog](https://pub.dev/packages/flutter_form_builder/changelog#900)
 
 ### Features
 
