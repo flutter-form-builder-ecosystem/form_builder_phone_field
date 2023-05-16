@@ -30,7 +30,7 @@ ___
 
 ### Setup
 
-No especific setup required: only install the dependency and use :)
+Configure dependency phone_number. More details [here](https://pub.dev/packages/phone_number#setup)
 
 ### Basic use
 
@@ -43,7 +43,7 @@ FormBuilderPhoneField(
   ),
   priorityListByIsoCode: ['KE'],
   validator: FormBuilderValidators.compose([
-    FormBuilderValidators.required(context),
+    FormBuilderValidators.required(),
   ]),
 ),
 ```
