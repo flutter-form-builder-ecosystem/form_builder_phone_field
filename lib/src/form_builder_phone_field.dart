@@ -296,12 +296,11 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
 
 abstract class FormBuilderPhoneFieldState {
   String get fullNumber;
-} 
+}
 
 class _FormBuilderPhoneFieldState
     extends FormBuilderFieldDecorationState<FormBuilderPhoneField, String>
     implements FormBuilderPhoneFieldState {
-  
   late TextEditingController _effectiveController;
   late Country _selectedDialogCountry;
 
