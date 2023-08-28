@@ -294,11 +294,17 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
       createState() => _FormBuilderPhoneFieldState();
 }
 
+abstract class FormBuilderPhoneFieldState {
+  String get fullNumber;
+}
+
 class _FormBuilderPhoneFieldState
-    extends FormBuilderFieldDecorationState<FormBuilderPhoneField, String> {
+    extends FormBuilderFieldDecorationState<FormBuilderPhoneField, String>
+    implements FormBuilderPhoneFieldState {
   late TextEditingController _effectiveController;
   late Country _selectedDialogCountry;
 
+  @override
   String get fullNumber {
     // When there is no phone number text, the field is empty -- the country
     // prefix is only prepended when a phone number is specified.
