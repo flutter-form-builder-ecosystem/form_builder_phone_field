@@ -51,7 +51,7 @@ jobs:
           flutter build ios --debug --no-codesign
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           files: coverage/lcov.info
           flags: unittests
