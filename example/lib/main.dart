@@ -16,12 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       // Locale config required by form_builder_validators
-      // https://github.com/danvick/flutter_form_builder/blob/master/packages/form_builder_validators/example/lib/main.dart
-      supportedLocales: const [...FormBuilderLocalizations.supportedLocales],
+      // https://github.com/flutter-form-builder-ecosystem/form_builder_validators/blob/main/example/lib/main.dart      supportedLocales: const [...FormBuilderLocalizations.supportedLocales],
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
         FormBuilderLocalizations.delegate,
       ],
       theme: ThemeData(
