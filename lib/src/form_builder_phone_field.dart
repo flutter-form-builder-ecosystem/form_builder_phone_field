@@ -243,12 +243,12 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
                       style: style,
                       focusNode: state.effectiveFocusNode,
                       decoration: InputDecoration(
-                        border: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        hintText: decoration.hintText,
-                        hintStyle: decoration.hintStyle,
-                      ),
+                          border: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          hintText: decoration.hintText,
+                          hintStyle: decoration.hintStyle,
+                          filled: false),
                       onChanged: (value) {
                         // Use setValue instead didChange to avoid parseNumber
                         state.setValue(value);
