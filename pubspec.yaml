@@ -4,12 +4,14 @@ version: 2.0.1
 repository: https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field
 issue_tracker: https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field/issues
 homepage: https://github.com/flutter-form-builder-ecosystem
+topics: 
+  - form
 funding:
   - https://opencollective.com/flutter-form-builder-ecosystem
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
-  flutter: ">=3.22.0"
+  sdk: ">=3.7.0 <4.0.0"
+  flutter: ">=3.29.0"
 
 dependencies:
   flutter:
