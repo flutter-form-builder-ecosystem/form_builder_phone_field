@@ -93,10 +93,11 @@ class MyHomePage extends StatelessWidget {
                     onPressed: () {
                       _formKey.currentState?.reset();
                       debugPrint(
-                          _formKey.currentState!.instantValue.toString());
+                        _formKey.currentState!.instantValue.toString(),
+                      );
                     },
                     child: const Text("Reset"),
-                  )
+                  ),
                 ],
               ),
             ],

@@ -121,10 +121,7 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
   final Widget? searchEmptyView;
 
   /// Country picker button
-  final Widget Function(
-    Widget flag,
-    String countryCode,
-  )? countryPicker;
+  final Widget Function(Widget flag, String countryCode)? countryPicker;
 
   /// Creates field for international phone number input.
   FormBuilderPhoneField({
@@ -194,104 +191,107 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
     this.iconSelector,
     this.countryPicker,
     this.searchEmptyView,
-  })  : assert(initialValue == null || controller == null),
-        super(
-          builder: (FormFieldState<String?> field) {
-            final state = field as _FormBuilderPhoneFieldState;
+  }) : assert(initialValue == null || controller == null),
+       super(
+         builder: (FormFieldState<String?> field) {
+           final state = field as _FormBuilderPhoneFieldState;
 
-            return InputDecorator(
-              decoration: state.decoration,
-              child: Row(
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: state.enabled
-                        ? () {
-                            state.focus();
-                            isCupertinoPicker
-                                ? state._openCupertinoCountryPicker()
-                                : state._openCountryPickerDialog();
-                          }
-                        : null,
-                    child: countryPicker != null
-                        ? countryPicker(
-                            CountryPickerUtils.getDefaultFlagImage(
-                              state._selectedDialogCountry,
-                            ),
-                            '+${state._selectedDialogCountry.phoneCode} ',
-                          )
-                        : Row(
-                            children: <Widget>[
-                              iconSelector ?? const Icon(Icons.arrow_drop_down),
-                              const SizedBox(width: 10),
-                              CountryPickerUtils.getDefaultFlagImage(
-                                state._selectedDialogCountry,
-                              ),
-                              const SizedBox(width: 10),
-                              Text(
-                                '+${state._selectedDialogCountry.phoneCode} ',
-                                style: Theme.of(state.context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .merge(style),
-                              ),
-                            ],
-                          ),
-                  ),
-                  Expanded(
-                    child: TextField(
-                      enabled: state.enabled,
-                      style: style,
-                      focusNode: state.effectiveFocusNode,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          hintText: decoration.hintText,
-                          hintStyle: decoration.hintStyle,
-                          filled: false),
-                      onChanged: (value) {
-                        // Use setValue instead didChange to avoid parseNumber
-                        state.setValue(value);
-                      },
-                      maxLines: 1,
-                      keyboardType: keyboardType,
-                      obscureText: obscureText,
-                      onEditingComplete: onEditingComplete,
-                      controller: state._effectiveController,
-                      autocorrect: autocorrect,
-                      autofocus: autofocus,
-                      buildCounter: buildCounter,
-                      cursorColor: cursorColor,
-                      cursorRadius: cursorRadius,
-                      cursorWidth: cursorWidth,
-                      enableInteractiveSelection: enableInteractiveSelection,
-                      maxLength: maxLength,
-                      inputFormatters: inputFormatters,
-                      keyboardAppearance: keyboardAppearance,
-                      maxLengthEnforcement: maxLengthEnforcement,
-                      scrollPadding: scrollPadding,
-                      textAlign: textAlign,
-                      textCapitalization: textCapitalization,
-                      textDirection: textDirection,
-                      textInputAction: textInputAction,
-                      strutStyle: strutStyle,
-                      //readOnly: state.readOnly, -- Does this need to be exposed?
-                      expands: expands,
-                      minLines: minLines,
-                      showCursor: showCursor,
-                      onTap: onTap,
-                      textAlignVertical: textAlignVertical,
-                    ),
-                  ),
-                ],
-              ),
-            );
-          },
-        );
+           return InputDecorator(
+             decoration: state.decoration,
+             child: Row(
+               children: <Widget>[
+                 GestureDetector(
+                   onTap:
+                       state.enabled
+                           ? () {
+                             state.focus();
+                             isCupertinoPicker
+                                 ? state._openCupertinoCountryPicker()
+                                 : state._openCountryPickerDialog();
+                           }
+                           : null,
+                   child:
+                       countryPicker != null
+                           ? countryPicker(
+                             CountryPickerUtils.getDefaultFlagImage(
+                               state._selectedDialogCountry,
+                             ),
+                             '+${state._selectedDialogCountry.phoneCode} ',
+                           )
+                           : Row(
+                             children: <Widget>[
+                               iconSelector ??
+                                   const Icon(Icons.arrow_drop_down),
+                               const SizedBox(width: 10),
+                               CountryPickerUtils.getDefaultFlagImage(
+                                 state._selectedDialogCountry,
+                               ),
+                               const SizedBox(width: 10),
+                               Text(
+                                 '+${state._selectedDialogCountry.phoneCode} ',
+                                 style: Theme.of(
+                                   state.context,
+                                 ).textTheme.titleMedium!.merge(style),
+                               ),
+                             ],
+                           ),
+                 ),
+                 Expanded(
+                   child: TextField(
+                     enabled: state.enabled,
+                     style: style,
+                     focusNode: state.effectiveFocusNode,
+                     decoration: InputDecoration(
+                       border: InputBorder.none,
+                       enabledBorder: InputBorder.none,
+                       errorBorder: InputBorder.none,
+                       hintText: decoration.hintText,
+                       hintStyle: decoration.hintStyle,
+                       filled: false,
+                     ),
+                     onChanged: (value) {
+                       // Use setValue instead didChange to avoid parseNumber
+                       state.setValue(value);
+                     },
+                     maxLines: 1,
+                     keyboardType: keyboardType,
+                     obscureText: obscureText,
+                     onEditingComplete: onEditingComplete,
+                     controller: state._effectiveController,
+                     autocorrect: autocorrect,
+                     autofocus: autofocus,
+                     buildCounter: buildCounter,
+                     cursorColor: cursorColor,
+                     cursorRadius: cursorRadius,
+                     cursorWidth: cursorWidth,
+                     enableInteractiveSelection: enableInteractiveSelection,
+                     maxLength: maxLength,
+                     inputFormatters: inputFormatters,
+                     keyboardAppearance: keyboardAppearance,
+                     maxLengthEnforcement: maxLengthEnforcement,
+                     scrollPadding: scrollPadding,
+                     textAlign: textAlign,
+                     textCapitalization: textCapitalization,
+                     textDirection: textDirection,
+                     textInputAction: textInputAction,
+                     strutStyle: strutStyle,
+                     //readOnly: state.readOnly, -- Does this need to be exposed?
+                     expands: expands,
+                     minLines: minLines,
+                     showCursor: showCursor,
+                     onTap: onTap,
+                     textAlignVertical: textAlignVertical,
+                   ),
+                 ),
+               ],
+             ),
+           );
+         },
+       );
 
   @override
   FormBuilderFieldDecorationState<FormBuilderPhoneField, String>
-      createState() => _FormBuilderPhoneFieldState();
+  createState() => _FormBuilderPhoneFieldState();
 }
 
 abstract class FormBuilderPhoneFieldState {
@@ -319,7 +319,8 @@ class _FormBuilderPhoneFieldState
     super.initState();
     _effectiveController = widget.controller ?? TextEditingController();
     _selectedDialogCountry = CountryPickerUtils.getCountryByIsoCode(
-        widget.defaultSelectedCountryIsoCode);
+      widget.defaultSelectedCountryIsoCode,
+    );
     _parsePhone();
   }
 
@@ -336,7 +337,8 @@ class _FormBuilderPhoneFieldState
     super.reset();
     _effectiveController = widget.controller ?? TextEditingController();
     _selectedDialogCountry = CountryPickerUtils.getCountryByIsoCode(
-        widget.defaultSelectedCountryIsoCode);
+      widget.defaultSelectedCountryIsoCode,
+    );
     _parsePhone();
   }
 
@@ -346,8 +348,9 @@ class _FormBuilderPhoneFieldState
       try {
         final parseResult = PhoneNumber.parse(phone);
         setState(() {
-          _selectedDialogCountry =
-              CountryPickerUtils.getCountryByIsoCode(parseResult.countryCode);
+          _selectedDialogCountry = CountryPickerUtils.getCountryByIsoCode(
+            parseResult.countryCode,
+          );
         });
         _effectiveController.text = parseResult.nsn;
       } catch (error) {
@@ -376,19 +379,20 @@ class _FormBuilderPhoneFieldState
             setState(() => _selectedDialogCountry = country);
             didChange(fullNumber);
           },
-          itemFilter: widget.countryFilterByIsoCode != null
-              ? (c) => widget.countryFilterByIsoCode!.contains(c.isoCode)
-              : null,
-          priorityList: widget.priorityListByIsoCode != null
-              ? List.generate(
-                  widget.priorityListByIsoCode!.length,
-                  (index) {
+          itemFilter:
+              widget.countryFilterByIsoCode != null
+                  ? (c) => widget.countryFilterByIsoCode!.contains(c.isoCode)
+                  : null,
+          priorityList:
+              widget.priorityListByIsoCode != null
+                  ? List.generate(widget.priorityListByIsoCode!.length, (
+                    index,
+                  ) {
                     return CountryPickerUtils.getCountryByIsoCode(
                       widget.priorityListByIsoCode![index],
                     );
-                  },
-                )
-              : null,
+                  })
+                  : null,
           offAxisFraction: widget.offAxisFraction,
           backgroundColor: widget.backgroundColor,
           diameterRatio: widget.diameterRatio,
@@ -420,11 +424,13 @@ class _FormBuilderPhoneFieldState
             titlePadding: widget.titlePadding ?? const EdgeInsets.all(8.0),
             searchCursorColor:
                 widget.cursorColor ?? Theme.of(context).primaryColor,
-            searchInputDecoration:
-                InputDecoration(hintText: widget.searchText ?? 'Search...'),
+            searchInputDecoration: InputDecoration(
+              hintText: widget.searchText ?? 'Search...',
+            ),
             isSearchable: widget.isSearchable ?? true,
             searchEmptyView: widget.searchEmptyView,
-            title: widget.dialogTitle ??
+            title:
+                widget.dialogTitle ??
                 Text(
                   'Select Your Phone Code',
                   style: widget.dialogTextStyle ?? widget.style,
@@ -433,18 +439,20 @@ class _FormBuilderPhoneFieldState
               setState(() => _selectedDialogCountry = country);
               didChange(fullNumber);
             },
-            itemFilter: widget.countryFilterByIsoCode != null
-                ? (c) => widget.countryFilterByIsoCode!.contains(c.isoCode)
-                : null,
-            priorityList: widget.priorityListByIsoCode != null
-                ? List.generate(
-                    widget.priorityListByIsoCode!.length,
-                    (index) {
+            itemFilter:
+                widget.countryFilterByIsoCode != null
+                    ? (c) => widget.countryFilterByIsoCode!.contains(c.isoCode)
+                    : null,
+            priorityList:
+                widget.priorityListByIsoCode != null
+                    ? List.generate(widget.priorityListByIsoCode!.length, (
+                      index,
+                    ) {
                       return CountryPickerUtils.getCountryByIsoCode(
-                          widget.priorityListByIsoCode![index]);
-                    },
-                  )
-                : null,
+                        widget.priorityListByIsoCode![index],
+                      );
+                    })
+                    : null,
             itemBuilder: _buildDialogItem,
             sortComparator: widget.sortComparator,
           ),

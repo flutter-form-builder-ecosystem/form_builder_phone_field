@@ -9,8 +9,10 @@ void main() {
     testWidgets('should reset value when call reset', (tester) async {
       final formFieldKey = GlobalKey<FormBuilderFieldState>();
       const fieldName = 'phone';
-      final testWidget =
-          FormBuilderPhoneField(name: fieldName, key: formFieldKey);
+      final testWidget = FormBuilderPhoneField(
+        name: fieldName,
+        key: formFieldKey,
+      );
       const validPhone = '642337488';
       const validCodePhone = '+34';
       await tester.pumpWidget(buildTestableFieldWidget(testWidget));
@@ -21,8 +23,9 @@ void main() {
 
       expect(formFieldKey.currentState?.value, null);
     });
-    testWidgets('should reset value to initial value when call reset',
-        (tester) async {
+    testWidgets('should reset value to initial value when call reset', (
+      tester,
+    ) async {
       final formFieldKey = GlobalKey<FormBuilderFieldState>();
       const fieldName = 'phone';
       const initialValue = '12345';
@@ -46,8 +49,10 @@ void main() {
       const fieldName = 'phone';
       const validPhone = '691375833';
       const validCodePhone = '+34';
-      final testWidget =
-          FormBuilderPhoneField(name: fieldName, key: formFieldKey);
+      final testWidget = FormBuilderPhoneField(
+        name: fieldName,
+        key: formFieldKey,
+      );
       await tester.pumpWidget(buildTestableFieldWidget(testWidget));
 
       formFieldKey.currentState?.didChange('$validCodePhone$validPhone');
@@ -61,8 +66,9 @@ void main() {
       final formKey = GlobalKey<FormBuilderState>();
       const fieldName = 'phone';
       final testWidget = FormBuilderPhoneField(name: fieldName);
-      await tester
-          .pumpWidget(buildTestableFieldWidget(testWidget, formKey: formKey));
+      await tester.pumpWidget(
+        buildTestableFieldWidget(testWidget, formKey: formKey),
+      );
 
       formKey.currentState?.patchValue({fieldName: '+34649294281'});
       await tester.pumpAndSettle();
@@ -70,17 +76,20 @@ void main() {
 
       expect(formKey.currentState?.instantValue, {fieldName: null});
     });
-    testWidgets('should reset to initial value value when call reset',
-        (tester) async {
+    testWidgets('should reset to initial value value when call reset', (
+      tester,
+    ) async {
       final formKey = GlobalKey<FormBuilderState>();
       const fieldName = 'phone';
       const initialValue = '1235';
       final testWidget = FormBuilderPhoneField(name: fieldName);
-      await tester.pumpWidget(buildTestableFieldWidget(
-        testWidget,
-        formKey: formKey,
-        initialValue: {fieldName: initialValue},
-      ));
+      await tester.pumpWidget(
+        buildTestableFieldWidget(
+          testWidget,
+          formKey: formKey,
+          initialValue: {fieldName: initialValue},
+        ),
+      );
 
       formKey.currentState?.patchValue({fieldName: '+34649294281'});
       await tester.pumpAndSettle();
@@ -88,22 +97,26 @@ void main() {
 
       expect(formKey.currentState?.instantValue, {fieldName: initialValue});
     });
-    testWidgets('should update valid phone when call patch value',
-        (tester) async {
+    testWidgets('should update valid phone when call patch value', (
+      tester,
+    ) async {
       final formKey = GlobalKey<FormBuilderState>();
       const fieldName = 'phone';
       const validPhone = '602299271';
       const validCodePhone = '+34';
       final testWidget = FormBuilderPhoneField(name: fieldName);
-      await tester
-          .pumpWidget(buildTestableFieldWidget(testWidget, formKey: formKey));
+      await tester.pumpWidget(
+        buildTestableFieldWidget(testWidget, formKey: formKey),
+      );
 
-      formKey.currentState
-          ?.patchValue({fieldName: '$validCodePhone$validPhone'});
+      formKey.currentState?.patchValue({
+        fieldName: '$validCodePhone$validPhone',
+      });
       await tester.pumpAndSettle();
 
-      expect(formKey.currentState?.instantValue,
-          {fieldName: '$validCodePhone$validPhone'});
+      expect(formKey.currentState?.instantValue, {
+        fieldName: '$validCodePhone$validPhone',
+      });
     });
   });
 }
