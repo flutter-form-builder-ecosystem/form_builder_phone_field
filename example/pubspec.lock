@@ -175,14 +175,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
-  phone_number:
+  phone_numbers_parser:
     dependency: transitive
     description:
-      name: phone_number
-      sha256: c66d3e2f2c69ce95f10bb923957049b1e5b8c6efea02d7366353fa3b80d4338a
+      name: phone_numbers_parser
+      sha256: "8aaa49708c9314d450d80767753c6512402e848138e5a91bf59ed3e0d3ac5d9b"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0"
+    version: "9.0.3"
   sky_engine:
     dependency: transitive
     description: flutter
