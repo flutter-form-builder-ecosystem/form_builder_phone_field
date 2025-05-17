@@ -11,7 +11,6 @@ ___
 
 - [Features](#features)
 - [Usage](#usage)
-  - [Setup](#setup)
   - [Basic use](#basic-use)
 - [Support](#support)
   - [Contribute](#contribute)
@@ -25,12 +24,9 @@ ___
 
 - Country selector
 - Automatic parsing international number
+- Using phone_numbers_parser package. More details [here](https://pub.dev/packages/phone_numbers_parser)
 
 ## Usage
-
-### Setup
-
-Configure dependency phone_number. More details [here](https://pub.dev/packages/phone_number#setup)
 
 ### Basic use
 

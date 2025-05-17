@@ -1,3 +1,18 @@
+## 3.0.0
+
+### BREAKING CHANGES
+
+* Using [`phone_numbers_parser`](https://pub.dev/packages/phone_numbers_parser) instead of `phone_number` package
+  * Now isn't required setup dependency on iOS and Android
+
+### Features
+
+* Update constraints to Flutter 3.29
+* Update constraints to Dart 3.7
+* Update `flutter_form_builder` to 10.x.x. Take a look breaking changes on [there changelog](https://pub.dev/packages/flutter_form_builder/changelog)
+* Expose `fullNumber` of field state. Thanks to [wheeOs](https://github.com/wheeOs)
+* Setup example with all platforms
+
 ## [2.0.1]
 
 * Update readme
