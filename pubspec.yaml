@@ -14,11 +14,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_form_builder: ^9.3.0
-  phone_number: ^2.1.0
+  flutter_form_builder: ^10.0.1
   country_pickers: ^3.0.1
+  phone_numbers_parser: ^9.0.3
 
 dev_dependencies:
-  flutter_lints: ^2.0.1
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
