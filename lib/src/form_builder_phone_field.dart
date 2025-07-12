@@ -201,40 +201,37 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
              child: Row(
                children: <Widget>[
                  GestureDetector(
-                   onTap:
-                       state.enabled
-                           ? () {
-                             state.focus();
-                             isCupertinoPicker
-                                 ? state._openCupertinoCountryPicker()
-                                 : state._openCountryPickerDialog();
-                           }
-                           : null,
-                   child:
-                       countryPicker != null
-                           ? countryPicker(
+                   onTap: state.enabled
+                       ? () {
+                           state.focus();
+                           isCupertinoPicker
+                               ? state._openCupertinoCountryPicker()
+                               : state._openCountryPickerDialog();
+                         }
+                       : null,
+                   child: countryPicker != null
+                       ? countryPicker(
+                           CountryPickerUtils.getDefaultFlagImage(
+                             state._selectedDialogCountry,
+                           ),
+                           '+${state._selectedDialogCountry.phoneCode} ',
+                         )
+                       : Row(
+                           children: <Widget>[
+                             iconSelector ?? const Icon(Icons.arrow_drop_down),
+                             const SizedBox(width: 10),
                              CountryPickerUtils.getDefaultFlagImage(
                                state._selectedDialogCountry,
                              ),
-                             '+${state._selectedDialogCountry.phoneCode} ',
-                           )
-                           : Row(
-                             children: <Widget>[
-                               iconSelector ??
-                                   const Icon(Icons.arrow_drop_down),
-                               const SizedBox(width: 10),
-                               CountryPickerUtils.getDefaultFlagImage(
-                                 state._selectedDialogCountry,
-                               ),
-                               const SizedBox(width: 10),
-                               Text(
-                                 '+${state._selectedDialogCountry.phoneCode} ',
-                                 style: Theme.of(
-                                   state.context,
-                                 ).textTheme.titleMedium!.merge(style),
-                               ),
-                             ],
-                           ),
+                             const SizedBox(width: 10),
+                             Text(
+                               '+${state._selectedDialogCountry.phoneCode} ',
+                               style: Theme.of(
+                                 state.context,
+                               ).textTheme.titleMedium!.merge(style),
+                             ),
+                           ],
+                         ),
                  ),
                  Expanded(
                    child: TextField(
@@ -379,20 +376,16 @@ class _FormBuilderPhoneFieldState
             setState(() => _selectedDialogCountry = country);
             didChange(fullNumber);
           },
-          itemFilter:
-              widget.countryFilterByIsoCode != null
-                  ? (c) => widget.countryFilterByIsoCode!.contains(c.isoCode)
-                  : null,
-          priorityList:
-              widget.priorityListByIsoCode != null
-                  ? List.generate(widget.priorityListByIsoCode!.length, (
-                    index,
-                  ) {
-                    return CountryPickerUtils.getCountryByIsoCode(
-                      widget.priorityListByIsoCode![index],
-                    );
-                  })
-                  : null,
+          itemFilter: widget.countryFilterByIsoCode != null
+              ? (c) => widget.countryFilterByIsoCode!.contains(c.isoCode)
+              : null,
+          priorityList: widget.priorityListByIsoCode != null
+              ? List.generate(widget.priorityListByIsoCode!.length, (index) {
+                  return CountryPickerUtils.getCountryByIsoCode(
+                    widget.priorityListByIsoCode![index],
+                  );
+                })
+              : null,
           offAxisFraction: widget.offAxisFraction,
           backgroundColor: widget.backgroundColor,
           diameterRatio: widget.diameterRatio,
@@ -439,20 +432,16 @@ class _FormBuilderPhoneFieldState
               setState(() => _selectedDialogCountry = country);
               didChange(fullNumber);
             },
-            itemFilter:
-                widget.countryFilterByIsoCode != null
-                    ? (c) => widget.countryFilterByIsoCode!.contains(c.isoCode)
-                    : null,
-            priorityList:
-                widget.priorityListByIsoCode != null
-                    ? List.generate(widget.priorityListByIsoCode!.length, (
-                      index,
-                    ) {
-                      return CountryPickerUtils.getCountryByIsoCode(
-                        widget.priorityListByIsoCode![index],
-                      );
-                    })
-                    : null,
+            itemFilter: widget.countryFilterByIsoCode != null
+                ? (c) => widget.countryFilterByIsoCode!.contains(c.isoCode)
+                : null,
+            priorityList: widget.priorityListByIsoCode != null
+                ? List.generate(widget.priorityListByIsoCode!.length, (index) {
+                    return CountryPickerUtils.getCountryByIsoCode(
+                      widget.priorityListByIsoCode![index],
+                    );
+                  })
+                : null,
             itemBuilder: _buildDialogItem,
             sortComparator: widget.sortComparator,
           ),
