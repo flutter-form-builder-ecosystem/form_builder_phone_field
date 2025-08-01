@@ -344,10 +344,30 @@ class _FormBuilderPhoneFieldState
     if (phone.isNotEmpty) {
       try {
         final parseResult = PhoneNumber.parse(phone);
+        Country? country;
+
+        final isoCode = parseResult.isoCode.name.split(".").last;
+
+        try {
+          country = CountryPickerUtils.getCountryByIsoCode(isoCode);
+        } catch (e) {
+          // ignore
+        }
+
+        if (country == null) {
+          try {
+            country = CountryPickerUtils.getCountryByPhoneCode(
+              parseResult.countryCode,
+            );
+          } catch (e) {
+            // ignore
+          }
+        }
+
+        if (country == null) throw Exception('Country not found');
+
         setState(() {
-          _selectedDialogCountry = CountryPickerUtils.getCountryByIsoCode(
-            parseResult.countryCode,
-          );
+          _selectedDialogCountry = country!;
         });
         _effectiveController.text = parseResult.nsn;
       } catch (error) {
