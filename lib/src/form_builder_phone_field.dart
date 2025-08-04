@@ -345,9 +345,9 @@ class _FormBuilderPhoneFieldState
       try {
         final parseResult = PhoneNumber.parse(phone);
         final isoCode = parseResult.isoCode.name.split(".").last;
-        Country? country = CountryPickerUtils.getCountryByIsoCode(isoCode);
+        Country country = CountryPickerUtils.getCountryByIsoCode(isoCode);
         setState(() {
-          _selectedDialogCountry = country!;
+          _selectedDialogCountry = country;
         });
         _effectiveController.text = parseResult.nsn;
       } catch (error) {
