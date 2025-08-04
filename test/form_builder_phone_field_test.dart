@@ -76,6 +76,22 @@ void main() {
 
       expect(formFieldKey.currentState?.value, '$validCodePhone$validPhone');
     });
+    testWidgets('should not found the correct country', (tester) async {
+      final formFieldKey = GlobalKey<FormBuilderFieldState>();
+      const fieldName = 'phone';
+      const validPhone = '8599999999';
+      const invalidCodePhone = '+999';
+      final testWidget = FormBuilderPhoneField(
+        name: fieldName,
+        key: formFieldKey,
+      );
+      await tester.pumpWidget(buildTestableFieldWidget(testWidget));
+
+      formFieldKey.currentState?.didChange('$invalidCodePhone$validPhone');
+      await tester.pumpAndSettle();
+
+      expect(formFieldKey.currentState?.value, '$invalidCodePhone$validPhone');
+    });
   });
   group('by FormKey -', () {
     testWidgets('should reset value when call reset', (tester) async {
