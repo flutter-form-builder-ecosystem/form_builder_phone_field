@@ -344,28 +344,8 @@ class _FormBuilderPhoneFieldState
     if (phone.isNotEmpty) {
       try {
         final parseResult = PhoneNumber.parse(phone);
-        Country? country;
-
         final isoCode = parseResult.isoCode.name.split(".").last;
-
-        try {
-          country = CountryPickerUtils.getCountryByIsoCode(isoCode);
-        } catch (e) {
-          // ignore
-        }
-
-        if (country == null) {
-          try {
-            country = CountryPickerUtils.getCountryByPhoneCode(
-              parseResult.countryCode,
-            );
-          } catch (e) {
-            // ignore
-          }
-        }
-
-        if (country == null) throw Exception('Country not found');
-
+        Country? country = CountryPickerUtils.getCountryByIsoCode(isoCode);
         setState(() {
           _selectedDialogCountry = country!;
         });
