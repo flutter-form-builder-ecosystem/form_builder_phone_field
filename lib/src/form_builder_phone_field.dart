@@ -344,10 +344,10 @@ class _FormBuilderPhoneFieldState
     if (phone.isNotEmpty) {
       try {
         final parseResult = PhoneNumber.parse(phone);
+        final isoCode = parseResult.isoCode.name.split(".").last;
+        Country country = CountryPickerUtils.getCountryByIsoCode(isoCode);
         setState(() {
-          _selectedDialogCountry = CountryPickerUtils.getCountryByIsoCode(
-            parseResult.countryCode,
-          );
+          _selectedDialogCountry = country;
         });
         _effectiveController.text = parseResult.nsn;
       } catch (error) {
