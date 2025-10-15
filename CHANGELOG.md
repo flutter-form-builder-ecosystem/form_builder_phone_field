@@ -1,3 +1,9 @@
+## 3.0.1
+
+### Bug fixes
+
+* Corrected country detection when parsing phone numbers.
+
 ## 3.0.0
 
 ### BREAKING CHANGES
