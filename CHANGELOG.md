@@ -3,6 +3,8 @@
 ### Bug fixes
 
 * Corrected country detection when parsing phone numbers.
+* Update constraints to Flutter 3.32
+* Update constraints to Dart 3.8
 
 ## 3.0.0
 
