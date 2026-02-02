@@ -5,7 +5,7 @@ International phone number field for [flutter_form_builder](https://pub.dev/pack
 [![Pub Version](https://img.shields.io/pub/v/form_builder_phone_field?logo=flutter&style=for-the-badge)](https://pub.dev/packages/form_builder_phone_field)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/flutter-form-builder-ecosystem/form_builder_phone_field/base.yaml?branch=main&logo=github&style=for-the-badge)](https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field/actions/workflows/base.yaml)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/flutter-form-builder-ecosystem/form_builder_phone_field?logo=codefactor&style=for-the-badge)](https://www.codefactor.io/repository/github/flutter-form-builder-ecosystem/form_builder_phone_field)
-[![Codecov](https://img.shields.io/codecov/c/github/flutter-form-builder-ecosystem/form_builder_phone_field?logo=codecov&style=for-the-badge)](https://codecov.io/gh/flutter-form-builder-ecosystem/form_builder_phone_field/)
+[![Codecov](https://img.shields.io/codecov/c/github/flutter-form-builder-ecosystem/form_builder_phone_field?logo=codecov&style=for-the-badge)](https://app.codecov.io/gh/flutter-form-builder-ecosystem/form_builder_phone_field)
 
 ___
 
@@ -24,7 +24,7 @@ ___
 
 - Country selector
 - Automatic parsing international number
-- Using phone_numbers_parser package. More details [here](https://pub.dev/packages/phone_numbers_parser)
+- Using phone_numbers_parser package. More details on [pub.dev package](https://pub.dev/packages/phone_numbers_parser)
 
 ## Usage
 
@@ -70,7 +70,6 @@ Donate or become a sponsor of Flutter Form Builder Ecosystem
 
 ## Roadmap
 
-- [Add complete web support](https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field/issues/11)
 - [Add visual examples](https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field/issues/12) (images, gifs, videos, sample application)
 - [Solve open issues](https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field/issues), [prioritizing bugs](https://github.com/flutter-form-builder-ecosystem/form_builder_phone_field/labels/bug)
 
