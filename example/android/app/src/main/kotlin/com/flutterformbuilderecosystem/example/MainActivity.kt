@@ -1,4 +1,4 @@
-package com.flutterformbuilderecosystem.example.example
+package com.flutterformbuilderecosystem.example
 
 import io.flutter.embedding.android.FlutterActivity
 
