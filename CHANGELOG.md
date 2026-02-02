@@ -1,3 +1,10 @@
+## 3.1.0
+
+* Update constraints to Flutter 3.38
+* Update constraints to Dart 3.10
+* Update dependencies
+* Update readme
+
 ## 3.0.1
 
 ### Bug fixes
