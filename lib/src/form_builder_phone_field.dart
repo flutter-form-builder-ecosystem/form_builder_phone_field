@@ -37,7 +37,8 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
   final bool expands;
   final int? minLines;
   final bool? showCursor;
-  final VoidCallback? onTap;
+  final GestureTapCallback? onTap;
+  final TapRegionCallback? onTapOutside;
 
   // For country dialog
   final String? searchText;
@@ -164,6 +165,7 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
     this.minLines,
     this.showCursor,
     this.onTap,
+    this.onTapOutside,
     this.searchText,
     this.titlePadding,
     this.dialogTitle,
@@ -277,6 +279,7 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
                      minLines: minLines,
                      showCursor: showCursor,
                      onTap: onTap,
+                     onTapOutside: onTapOutside,
                      textAlignVertical: textAlignVertical,
                    ),
                  ),
