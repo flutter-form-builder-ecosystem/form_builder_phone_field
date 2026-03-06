@@ -1,3 +1,8 @@
+## 3.1.1
+
+* Adding the possibility to set onTapOutside callback
+* Update dependencies
+
 ## 3.1.0
 
 * Update constraints to Flutter 3.38
