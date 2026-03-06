@@ -76,8 +76,6 @@ class MyHomePage extends StatelessWidget {
                   FormBuilderValidators.numeric(),
                   FormBuilderValidators.required(),
                 ]),
-                onTapOutside: (event) => 
-                  FocusManager.instance.primaryFocus?.unfocus()
               ),
               const SizedBox(height: 15),
               Wrap(
