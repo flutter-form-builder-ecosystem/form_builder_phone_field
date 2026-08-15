@@ -2,9 +2,10 @@ import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
 import 'package:country_pickers/utils/typedefs.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/services.dart'
+    hide TextCapitalization, TextInputAction, TextInputType;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 //TODO: Switch country_pickers for country_code_picker
@@ -41,7 +42,6 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
   final TapRegionCallback? onTapOutside;
 
   // For country dialog
-  final String? searchText;
   final EdgeInsets? titlePadding;
   final bool? isSearchable;
   final Text? dialogTitle;
@@ -166,7 +166,6 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
     this.showCursor,
     this.onTap,
     this.onTapOutside,
-    this.searchText,
     this.titlePadding,
     this.dialogTitle,
     this.isSearchable,
@@ -228,9 +227,10 @@ class FormBuilderPhoneField extends FormBuilderFieldDecoration<String> {
                              const SizedBox(width: 10),
                              Text(
                                '+${state._selectedDialogCountry.phoneCode} ',
-                               style: Theme.of(
-                                 state.context,
-                               ).textTheme.titleMedium!.merge(style),
+                               style: Theme.of(state.context)
+                                   .textTheme
+                                   .titleMedium!
+                                   .merge(style),
                              ),
                            ],
                          ),
@@ -420,9 +420,6 @@ class _FormBuilderPhoneFieldState
             titlePadding: widget.titlePadding ?? const EdgeInsets.all(8.0),
             searchCursorColor:
                 widget.cursorColor ?? Theme.of(context).primaryColor,
-            searchInputDecoration: InputDecoration(
-              hintText: widget.searchText ?? 'Search...',
-            ),
             isSearchable: widget.isSearchable ?? true,
             searchEmptyView: widget.searchEmptyView,
             title:

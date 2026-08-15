@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart'
+    hide GlobalMaterialLocalizations;
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_phone_field/form_builder_phone_field.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:material_ui/material_ui.dart';
 
 void main() {
   runApp(const MyApp());
