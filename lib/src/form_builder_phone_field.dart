@@ -451,11 +451,19 @@ class _FormBuilderPhoneFieldState
   }
 
   Widget _buildDialogItem(Country country) {
-    return ListTile(
-      contentPadding: EdgeInsets.zero,
-      leading: CountryPickerUtils.getDefaultFlagImage(country),
-      title: Text(country.name),
-      trailing: Text('+${country.phoneCode}'),
+    // CountryPickerDialog (country_pickers) is still built on
+    // package:flutter/material.dart, so its SimpleDialog provides the SDK's
+    // Material, which this package's material_ui ListTile cannot see
+    // ("No Material widget found" and an empty list). A transparent Material
+    // of the same library as the tile gives it its ink surface.
+    return Material(
+      type: MaterialType.transparency,
+      child: ListTile(
+        contentPadding: EdgeInsets.zero,
+        leading: CountryPickerUtils.getDefaultFlagImage(country),
+        title: Text(country.name),
+        trailing: Text('+${country.phoneCode}'),
+      ),
     );
   }
 }
